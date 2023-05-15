@@ -1,0 +1,27 @@
+<h1>Lista Partecipanti</h1>
+<h3>Totale presenti: {{ presenti }}</h3>
+<h3>Totale assenti: {{ assenti }}</h3>
+<h3>Totale in dubbio: {{ dubbio }}</h3>
+
+<table id="partecipants">
+  <tr>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Presente</th>
+  </tr>
+  <ng-container *ngFor="let partecipante of partecipanti">
+    <tr>
+      <td>{{ partecipante.nome }}</td>
+      <td>{{ partecipante.cognome }}</td>
+      <td>
+        <div
+          class="dot"
+          [ngClass]="{
+            red: partecipante.isPresent == 'no',
+            green: partecipante.isPresent == 'si'
+          }"
+        ></div>
+      </td>
+    </tr>
+  </ng-container>
+</table>

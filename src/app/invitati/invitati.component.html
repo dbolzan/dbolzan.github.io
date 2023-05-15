@@ -1,0 +1,22 @@
+<h1>Parteciperai al matrimonio?</h1>
+
+<div>
+  <form [formGroup]="form" (ngSubmit)="onConfirm()">
+    <label >Nome</label>
+    <input formControlName="firstname" type="text" id="fname" name="firstname" placeholder="Inserisci nome..">
+
+    <label >Cognome</label>
+    <input formControlName="lastname" type="text" id="lname" name="lastname" placeholder="Inserisci cognome..">
+
+    <label for="scelta">Partecipo</label>
+    <select formControlName="choice" id="scelta" name="scelta">
+      <option value="si">Sì</option>
+      <option value="no">No</option>
+      <option value="forse">Ancora in dubbio</option>
+    </select>
+  
+    <input [disabled]="!form.valid" type="submit" value="Conferma scelta">
+  </form>
+</div>
+
+
