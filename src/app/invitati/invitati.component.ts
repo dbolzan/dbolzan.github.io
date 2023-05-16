@@ -31,16 +31,16 @@ export class InvitatiComponent {
     const query = this.store.collection(
       "partecipanti",
       (ref) =>
-        ref.where("nome", "==", (this.form.get("firstname")?.value as String).toUpperCase()) &&
-        ref.where("cognome", "==", (this.form.get("lastname")?.value  as String).toUpperCase())
+        ref.where("nome", "==", (this.form.get("firstname")?.value as String).toUpperCase().trim()) &&
+        ref.where("cognome", "==", (this.form.get("lastname")?.value  as String).toUpperCase().trim())
     );
     query.get().subscribe((querySnapshot) => {
       if (querySnapshot.empty) {
         this.store
           ?.collection<Partecipante>("partecipanti")
           .add({
-            nome: (this.form.get("firstname")?.value as String).toUpperCase(),
-            cognome: (this.form.get("lastname")?.value as String).toUpperCase(),
+            nome: (this.form.get("firstname")?.value as String).toUpperCase().trim(),
+            cognome: (this.form.get("lastname")?.value as String).toUpperCase().trim(),
             isPresent: (this.form.get("choice")?.value as String).toUpperCase(),
           })
           .then((res) => {
@@ -54,11 +54,12 @@ export class InvitatiComponent {
         querySnapshot.forEach((documentSnapshot) => {
           this.store
             ?.doc("partecipanti/" + documentSnapshot.id)
-            .update({ isPresent: this.form.get("choice")?.value })
+            .update({ isPresent: (this.form.get("choice")?.value as String).toUpperCase() })
             .then((res) => {
               alert(
                 "E' già presente una preferenza relativa a questo nominativo. La scelta è stata aggiornata"
               );
+              this.form.reset();
             })
             .catch((error) => {
               alert("Qualcosa è andato storto");
