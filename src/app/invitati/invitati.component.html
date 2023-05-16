@@ -1,12 +1,29 @@
+<div class="admin">
+  <button class="button-13" role="button" (click)="openModal = true">
+    Vai ad admin
+  </button>
+</div>
 <h1>Parteciperai al matrimonio?</h1>
 
-<div>
+<div class="form">
   <form [formGroup]="form" (ngSubmit)="onConfirm()">
-    <label >Nome</label>
-    <input formControlName="firstname" type="text" id="fname" name="firstname" placeholder="Inserisci nome..">
+    <label>Nome</label>
+    <input
+      formControlName="firstname"
+      type="text"
+      id="fname"
+      name="firstname"
+      placeholder="Inserisci nome.."
+    />
 
-    <label >Cognome</label>
-    <input formControlName="lastname" type="text" id="lname" name="lastname" placeholder="Inserisci cognome..">
+    <label>Cognome</label>
+    <input
+      formControlName="lastname"
+      type="text"
+      id="lname"
+      name="lastname"
+      placeholder="Inserisci cognome.."
+    />
 
     <label for="scelta">Partecipo</label>
     <select formControlName="choice" id="scelta" name="scelta">
@@ -14,9 +31,30 @@
       <option value="no">No</option>
       <option value="forse">Ancora in dubbio</option>
     </select>
-  
-    <input [disabled]="!form.valid" type="submit" value="Conferma scelta">
+    <div class="button-submit">
+      <input [disabled]="!form.valid" type="submit" value="Conferma scelta" />
+    </div>
   </form>
 </div>
 
-
+<div *ngIf="openModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="openModal = false">&times;</span>
+    <form class="form-pass" [formGroup]="formPass" (ngSubmit)="goToAdmin()">
+      <label>Password</label>
+      <input
+        formControlName="password"
+        type="password"
+        id="pass"
+        name="password"
+        placeholder="Inserisci password.."
+      />
+  
+      
+      <div class="button-submit">
+        <input type="submit" value="Vai ad admin"/>
+      </div>
+    </form>
+  </div>
+</div>

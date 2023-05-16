@@ -1,3 +1,9 @@
+.admin {
+  display: flex;
+  justify-content: end;
+  margin: 1rem 0 2rem;
+}
+
 h1 {
   text-align: center;
   width: 80%;
@@ -5,6 +11,7 @@ h1 {
 }
 
 input[type="text"],
+input[type="password"],
 select {
   width: 100%;
   padding: 12px 20px;
@@ -16,7 +23,7 @@ select {
 }
 
 input[type="submit"] {
-  width: 100%;
+  width: fit-content;
   background-color: #4caf50;
   color: white;
   padding: 14px 20px;
@@ -30,10 +37,90 @@ input[type="submit"] {
   background-color: #ccc;
 }
 
-div {
+.button-submit {
+  text-align: center;
+}
+
+.form {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
-  width: 80%;
   margin: 2rem auto;
+}
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 30px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* CSS */
+.button-13 {
+  background-color: navajowhite;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember", sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.button-13:hover {
+  background-color: #f7fafa;
+}
+
+.button-13:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  outline: 0;
+}
+
+.form-pass {
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
 }
