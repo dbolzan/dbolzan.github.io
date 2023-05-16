@@ -23,9 +23,9 @@ export class AdminComponent extends AppComponent implements OnInit {
       querySnapshot.forEach((doc) => {
         this.partecipanti.push(doc.data() as Partecipante);
       });
-      this.presenti = this.partecipanti.filter(pres => pres.isPresent == 'si')?.length;
-      this.assenti = this.partecipanti.filter(pres => pres.isPresent == 'no')?.length;
-      this.dubbio = this.partecipanti.filter(pres => pres.isPresent == 'forse')?.length;
+      this.presenti = this.partecipanti.filter(pres => pres.isPresent == 'SI')?.length;
+      this.assenti = this.partecipanti.filter(pres => pres.isPresent == 'NO')?.length;
+      this.dubbio = this.partecipanti.filter(pres => pres.isPresent == 'FORSE')?.length;
     });
   }
 }
