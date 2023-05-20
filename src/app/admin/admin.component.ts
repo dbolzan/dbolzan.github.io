@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Renderer2 } from "@angular/core";
 import { AppComponent, Partecipante } from "../app.component";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
@@ -13,20 +13,29 @@ export class AdminComponent extends AppComponent implements OnInit {
   presenti = 0;
   assenti = 0;
   dubbio = 0;
-  constructor() {
+  constructor(private renderer: Renderer2) {
     super();
   }
 
   ngOnInit() {
+    let doc = document.querySelector(".app-wrapper");
+    if (doc) {
+      this.renderer.setStyle(doc, "background-image", "none");
+    }
     this.partecipanti = [];
     getDocs(collection(this.db, "partecipanti")).then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         this.partecipanti.push(doc.data() as Partecipante);
       });
-      debugger
-      this.presenti = this.partecipanti.filter(pres => pres.isPresent == 'SI')?.length;
-      this.assenti = this.partecipanti.filter(pres => pres.isPresent == 'NO')?.length;
-      this.dubbio = this.partecipanti.filter(pres => pres.isPresent == 'FORSE')?.length;
+      this.presenti = this.partecipanti.filter(
+        (pres) => pres.isPresent == "SI"
+      )?.length;
+      this.assenti = this.partecipanti.filter(
+        (pres) => pres.isPresent == "NO"
+      )?.length;
+      this.dubbio = this.partecipanti.filter(
+        (pres) => pres.isPresent == "FORSE"
+      )?.length;
     });
   }
 }
